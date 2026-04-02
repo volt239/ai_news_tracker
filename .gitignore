@@ -1,0 +1,10 @@
+# OS / Python
+.DS_Store
+__pycache__/
+*.pyc
+
+# Local extracted artifacts (large/intermediate)
+nvidia_fy25_table_*.csv
+nvidia_fy25_tables_combined.csv
+nvidia_fy25_tables_index.csv
+m7_pdf_snippets.txt

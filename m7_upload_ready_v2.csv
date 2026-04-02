@@ -1,0 +1,8 @@
+company,e_carbon,e_energy,e_resource,s_labor,s_safety,s_diversity,g_board,g_ethics,g_disclosure,investment,fit
+NVIDIA,80,92,85,86,88,74,84,93,85,81,79
+Microsoft,75,88,90,80,82,76,82,88,86,82,80
+Apple,90,94,92,82,85,78,86,90,88,76,80
+Alphabet,78,90,84,79,82,76,84,87,87,74,73
+Amazon,82,90,86,80,84,74,80,84,79,79,70
+Meta,83,90,82,81,83,74,83,87,85,70,65
+Tesla,84,88,90,72,75,68,70,72,74,83,66

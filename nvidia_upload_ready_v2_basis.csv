@@ -1,0 +1,12 @@
+metric,score,basis_from_report
+e_carbon,80,"Scope 1 12,952 / Scope 2 market-based 0 달성, 다만 Scope 3가 6,912,577로 매우 큼"
+e_energy,92,"FY25에 글로벌 전력 사용 100%를 재생전력으로 구매 또는 매칭했다고 보고"
+e_resource,85,"GPU 시스템 패키징 재활용 가능 재질 비중 97% 언급"
+s_labor,86,"전체 이직률 2.5%, 공급망 감사(최근 2년) 91% 및 인권/소싱 체계 공개"
+s_safety,88,"미국 OSHA 기록재해율 0.08, 글로벌 사망사고 None"
+s_diversity,74,"여성 비율 21.2%로 개선 여지 있으나 기술/리더/이사회 다양성 지표 공개"
+g_board,84,"이사회 NCG 위원회가 지속가능성 전략/리스크를 감독한다고 명시"
+g_ethics,93,"Code of conduct 교육 98%+, 반부패 교육 99%+, 정책/조사 프로세스 공개"
+g_disclosure,85,"GRI/SASB 지표와 10-K/Proxy 교차참조로 공시 구조가 비교적 명확"
+investment,81,"AI 인프라/데이터센터 수요와 기술 리더십 반영한 내부 투자매력도 가정값"
+fit,79,"현 스코어링 룰과 사업전략 적합도 기준 내부 가정값"
