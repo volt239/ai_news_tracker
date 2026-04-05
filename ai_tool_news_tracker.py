@@ -4,6 +4,7 @@ import os
 import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 from urllib.parse import quote_plus
 from urllib.parse import urlparse
 
@@ -324,6 +325,22 @@ def make_wordcloud_text(articles_df):
     if articles_df.empty or "raw_text" not in articles_df.columns:
         return ""
     return " ".join(articles_df["raw_text"].dropna().astype(str).tolist())
+
+
+def resolve_korean_font_path():
+    # 로컬/클라우드 환경에서 자주 쓰는 한글 폰트 후보 경로.
+    candidates = [
+        "/System/Library/Fonts/AppleSDGothicNeo.ttc",  # macOS
+        "/usr/share/fonts/truetype/nanum/NanumGothic.ttf",  # Ubuntu + fonts-nanum
+        "/usr/share/fonts/truetype/nanum/NanumBarunGothic.ttf",
+        "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",  # Ubuntu + fonts-noto-cjk
+        "/usr/share/fonts/opentype/noto/NotoSansCJKkr-Regular.otf",
+        str(Path(__file__).resolve().parent / "fonts" / "NanumGothic.ttf"),  # 번들 폰트(선택)
+    ]
+    for path in candidates:
+        if Path(path).exists():
+            return path
+    return None
 
 
 def _extract_text_from_responses_api(resp_json: dict) -> str:
@@ -796,11 +813,11 @@ if isinstance(st.session_state.llm_qa_result, dict):
 st.subheader("☁️ 뉴스 워드클라우드")
 wc_text = make_wordcloud_text(valid_articles_df)
 if wc_text.strip():
-    # macOS 기본 한글 폰트 경로. 환경에 따라 폰트가 없으면 기본 폰트로 fallback.
-    font_path = "/System/Library/Fonts/AppleSDGothicNeo.ttc"
-    try:
+    font_path = resolve_korean_font_path()
+    if font_path:
         wc = WordCloud(width=1200, height=500, background_color="white", font_path=font_path).generate(wc_text)
-    except Exception:
+    else:
+        st.warning("한글 폰트를 찾지 못해 워드클라우드 한글이 깨질 수 있습니다. 배포 환경에 Nanum/Noto 폰트를 설치해 주세요.")
         wc = WordCloud(width=1200, height=500, background_color="white").generate(wc_text)
     fig, ax = plt.subplots(figsize=(14, 6))
     ax.imshow(wc, interpolation="bilinear")
